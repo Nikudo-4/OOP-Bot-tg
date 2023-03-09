@@ -16,8 +16,8 @@ class Bot
             $idPerson = $update['message']['from']['id'];
             $namePerson = $update['message']['from']['first_name'];
             $secondPerson = $update['message']['from']['username'];
-            
-            switch ($update['message']['text']) {
+
+            switch (mb_strtolower($update['message']['text'])) {
             case('/start'):
                 $text = 'Добро пожаловать';
                 $TG->request([
@@ -30,14 +30,14 @@ class Bot
                     'name' => $namePerson
                 ]);
             break;
-            case 'Привет':
+            case 'привет':
                 $text = 'Ну привет';
                 $TG->request([
                     'chat_id' => $idPerson,
                     'text' => $text,
                 ] , 'sendMessage');
                 break;
-            case 'Как дела?':
+            case 'как дела?':
                 $text = 'Норм, а ты как?';
                 $TG->request([
                     'chat_id' => $idPerson,
@@ -53,9 +53,6 @@ class Bot
                     ] , 'sendMessage');
                     break;
             }
-            var_dump($update); // выводим ['message']['from']['id']
         }
-        // var_dump($_POST);
-        
     }
 }

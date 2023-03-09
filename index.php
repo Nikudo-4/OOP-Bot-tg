@@ -1,10 +1,5 @@
 <?php
-require_once('Db.php');
+require_once('src/Bot.php');
 
-
-    
-
-
-    // start();
-
+(new Bot)->start();
 ?>
